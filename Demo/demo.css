@@ -1,16 +1,12 @@
-<div class="content">
-    
-    <div class='wrapper'>
-           <p>Mit Update wird ein Ajax-Request ausgelöst, welcher nach 2 Sekunden vom Server beantwortet wird.</p>
-        <p>Der Cache ist aktiv und konfiguriert mit einer Lebenszeit von 5 Sekunden. Nach dem Erhalt der ersten Antwort ist diese also weiter 5 Sekunden aus dem Cache auslesbar.</p>
-           <ul id='post'></ul>
-    </div>
-    
-    <div>
-        <input type="button" value="Update" id="update" onclick="update()">
-    </div>
-    
-    <div class="footer">
-        <span>Torsten Bitterlich</span>
-    </div>
-</div>    ​
+body {
+    font-family: Helvetica, Sans, Arial;
+}
+
+p, ul {
+    padding: 10px;
+}
+
+ul {
+    margin: 5px;
+    border: 2px dashed #999;
+}
