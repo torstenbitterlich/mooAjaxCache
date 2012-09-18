@@ -61,15 +61,9 @@ ajaxCache.prototype.generate_key = function(url, data) {
 function ajax(url, data) {
 
     var cachedResponse = cache.get(url, [data]);
-    if (cachedResponse !== false) { /* show info for debugging */
-        var el;
-        el = new Element('br').inject($('post'));
-        el = new Element('li', {
-            text: 'Ergebnis aus dem Cache:'
-        }).inject($('post'));
-
+    if (cachedResponse !== false) { /* show info for debugging */     
         /* update element with cached data */
-        show_response(cachedResponse, $('post'));
+        show_response(cachedResponse, $('post'), true);
     }
     else { /* send ajax request through mooTools Request.JSON */
         new Request.JSON({
@@ -83,23 +77,29 @@ function ajax(url, data) {
                 /* store responce in cache */
                 cache.put(url, data, response);
 
-                /* show info for debugging */
-                el = new Element('br').inject($('post'));
-                el = new Element('li', {
-                    text: 'Ergebnis der Abfrage:'
-                }).
-                inject($('post'));
-
                 /* update element with received data */
-                show_response(response, $('post'));
+                show_response(response, $('post'), false);
             }
         }).send();
     }
 }
 
 /* ajax callback function */
-show_response = function(obj, target) {
+show_response = function(obj, target, cached) {
 
+    if(cached)
+    {
+        el = new Element('li', {
+            text: 'cached Result:'
+        }).inject($('post'));
+
+    }
+    else 
+    {
+        el = new Element('li', {
+            text: 'request Result:'
+        }).inject($('post'));
+    }
     /* why does this work using $H ? */
     $H(obj).each(function(x, y) {
         new Element('li', {
