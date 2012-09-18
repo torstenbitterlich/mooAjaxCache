@@ -1,0 +1,12 @@
+
+
+---
+ name: ajaxCache with mooTools Request
+ description: a simple jsFiddle, which echoes some JSON. Caching of requests is implemented.
+ authors:
+   - Torsten Bitterlich
+ resources:
+   - http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js
+ normalize_css: yes
+ ...
+
